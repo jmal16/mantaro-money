@@ -1,0 +1,38 @@
+import discord
+import asyncio
+from random import randrange
+from time import sleep
+from threading import Thread
+
+money = discord.Client()
+sending = False
+channel = None
+counter = 0
+
+@money.event
+async def on_ready():
+	print( "Logged in." )
+
+@money.event
+async def on_message( msg ):
+	global sending, counter
+	if msg.content.startswith( "j!start" ) and msg.author.id == "403379568590848000":
+		sending = True
+		await money.send_message( msg.channel, "->game multiple trivia 5" )
+	elif msg.content.startswith( "j!stop" ) and msg.author.id == "403379568590848000":
+		sending = False
+	elif msg.author.id == "213466096718708737" and sending:
+		if len( msg.embeds ) > 0:
+			sleep( 2 )
+			await money.send_message( msg.channel, str( randrange( 1, 3 ) ) )
+		elif not msg.content.find( "That's not it, you have" ) == -1:
+			sleep( 2 )
+			await money.send_message( msg.channel, str( randrange( 3, 5 ) ) )
+		elif not msg.content.find( "answering correctly!" ) == -1 or not msg.content.find( "ending game." ) == -1:
+			counter += 1
+			if counter == 5:
+				sleep( 2 )
+				counter = 0
+				await money.send_message( msg.channel, "->game multiple trivia 5" )
+
+money.run( os.getenv( "token", "" ), self_bot = True, bot = False )
