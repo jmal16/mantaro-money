@@ -1,1 +1,1 @@
-python3 money.py
+worker python3 money.py
