@@ -3,6 +3,7 @@ import asyncio
 from random import randrange
 from time import sleep
 from threading import Thread
+import os
 
 money = discord.Client()
 sending = False
