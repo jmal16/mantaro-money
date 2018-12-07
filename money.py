@@ -16,7 +16,7 @@ async def on_ready():
 
 @money.event
 async def on_message( msg ):
-	global sending, counter
+	global sending, counter, channel
 	if msg.content.startswith( "j!start" ) and msg.author.id == "403379568590848000":
 		sending = True
 		channel = msg.channel
