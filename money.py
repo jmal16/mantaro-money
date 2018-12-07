@@ -26,15 +26,15 @@ async def on_message( msg ):
 		counter = 0
 	elif msg.author.id == "213466096718708737" and msg.channel == channel and sending:
 		if len( msg.embeds ) > 0:
-			sleep( 2 )
+			sleep( 2.5 )
 			await money.send_message( msg.channel, str( randrange( 1, 3 ) ) )
 		elif not msg.content.find( "That's not it, you have" ) == -1:
-			sleep( 2 )
+			sleep( 2.5 )
 			await money.send_message( msg.channel, str( randrange( 3, 5 ) ) )
 		elif not msg.content.find( "answering correctly!" ) == -1 or not msg.content.find( "ending game." ) == -1:
 			counter += 1
 			if counter == 5:
-				sleep( 2 )
+				sleep( 2.5 )
 				counter = 0
 				await money.send_message( msg.channel, "->game multiple trivia 5" )
 
