@@ -17,11 +17,11 @@ async def on_ready():
 @money.event
 async def on_message( msg ):
 	global sending, counter, channel
-	if msg.content.startswith( "j!start" ) and msg.author.id == "403379568590848000":
+	if msg.content.startswith( "f!start" ) and msg.author.id == "200335254282567680":
 		sending = True
 		channel = msg.channel
 		await money.send_message( msg.channel, "->game multiple trivia 5" )
-	elif msg.content.startswith( "j!stop" ) and msg.author.id == "403379568590848000":
+	elif msg.content.startswith( "f!stop" ) and msg.author.id == "200335254282567680":
 		sending = False
 		counter = 0
 	elif msg.author.id == "213466096718708737" and msg.channel == channel and sending:
